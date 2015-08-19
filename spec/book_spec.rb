@@ -5,6 +5,14 @@ require('author')
 
 DB = PG.connect({:dbname => 'library_test'})
 
+RSpec.configure do |config|
+  config.after(:each) do
+    DB.exec("DELETE FROM book *;")
+    DB.exec("DELETE FROM author *;")
+    DB.exec("DELETE FROM book_author *;")
+  end
+end
+
 describe(Book) do
   describe('#initialize') do
     it('creates a book and returns title') do
