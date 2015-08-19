@@ -36,10 +36,11 @@ describe(Book) do
 
   describe('.all') do
     it('should be empty at first') do
-      shouldbearray = Book.all()
       # binding.pry
       expect(Book.all()).to(eq([]))
     end
+
+    #we need to test a return of a filled books array next
   end
 
 

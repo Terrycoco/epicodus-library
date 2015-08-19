@@ -23,7 +23,8 @@ class Book
     books = []
     result_set = DB.exec("select * from book;")
 
-    if result_set.num_tuples.zero?
+    # double check syntax
+    if !result_set.num_tuples.zero?
       result_set.each() do |row|
         title = row.fetch('title')
         genre = row.fetch('genre')
@@ -34,7 +35,6 @@ class Book
         rs = DB.exec("SELECT author.author_id, author.firstname, author.lastname from author, book_author
              WHERE author.author_id = book_author.author_id
              AND book_author.book_id = #{book_id};")
-
 
         rs.each() do |row|
           firstname = rs.fetch('firstname')
@@ -48,11 +48,8 @@ class Book
         books.push(new_book)
 
       end
-
     end
     return books
-
   end
-
 
 end
