@@ -1,17 +1,28 @@
 <h1>Book Details</h1>
 
-<h3><%= @book.title %></h3>
-<h4>Genre: <%= @book.genre %></h4>
 
 
-<p><a href="/books/<%= @book.id() %>/edit">Edit Book</a></p>
+<form role="form" action="/books/<%= @book.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
 
-  <button name="button" class="btn-primary">Delete Book</button>
+  <div class="form-group">
+    <label for="title">Edit Title:</label>
+    <input class="form-control" type="text" name="title" value="<%= @book.title %>">
+    <br>
+    <label for="genre">Edit Genre:</label>
+    <input class="form-control" type="text" name="genre" value="<%= @book.genre %>">
+  </div>
+
+    <button class='btn-default' type="submit">Save</button>
+</form>
+
+</br>
 
 
-<form action="/books/<%= @book.id() %>" method="post">
+<form role="form" action="/books/<%= @book.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
   <button name="button" class="btn-success">Delete Book</button>
 </form>
+
 </br>
 <a href="/">Back to Catalog</a>

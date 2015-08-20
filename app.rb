@@ -27,10 +27,6 @@ get('/books/:id') do
   erb(:book)
 end
 
-get('/books/:id/edit') do
-  @book = Book.find(params.fetch("id").to_i())
-  erb(:book_edit)
-end
 
 patch('/books/:id') do
   title = params.fetch('title')
