@@ -37,6 +37,13 @@ class Book
     new_book
   end
 
+  define_method(:update) do |fields_to_update|
+    @title = fields_to_update.fetch(:title, @title)
+    @genre = fields_to_update.fetch(:genre, @genre)
+    @id = self.id()
+    DB.exec("UPDATE books SET title = '#{@title}', genre = '#{@genre}' WHERE book_id = #{@id};")
+  end
+
 end
   #
   # define_method(:add_author) do |new_author|

@@ -40,6 +40,15 @@ describe(Book) do
     end
   end
 
+  describe('#update') do
+    it('updates the values of the book') do
+      new_book = Book.new({:title => 'A Xmas Carol',  :genre => 'classics', :id => nil})
+      new_book.save()
+      new_book.update({:title => 'A Christmas Carol'})
+      expect(new_book.title()).to(eq('A Christmas Carol'))
+    end
+  end
+
 end
 
 
