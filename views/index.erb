@@ -1,0 +1,19 @@
+<h1>Welcome to the Library</h1>
+<h2>Catalog</h2>
+<ul>
+  <% @catalog.each() do |book| %>
+  <li><a href='/book/<%= book.id() %>'><%=book.title() %></li>
+  <% end %>
+</ul>
+
+<form action="/books/new" method="post">
+  <div class="form-group">
+    <label for="title">Book Title:</label>
+    <input type="text" name="title" >
+    <label for="genre">Book Genre:</label>
+    <input type="text" name="genre" >
+  </div>
+  <div>
+    <button name="button" type="submit">Add Book</button>
+  </div>
+</form>
