@@ -2,18 +2,19 @@
 <h2>Catalog</h2>
 <ul>
   <% @catalog.each() do |book| %>
-  <li><a href='/book/<%= book.id() %>'><%=book.title() %></li>
+  <li><a href='/book/<%= book.id() %>'><%=book.title() %></a></li>
   <% end %>
 </ul>
-
-<form action="/books/new" method="post">
+<br><br><br><br>
+<form action="/" method="post">
   <div class="form-group">
     <label for="title">Book Title:</label>
     <input type="text" name="title" >
+    <br>
     <label for="genre">Book Genre:</label>
     <input type="text" name="genre" >
   </div>
-  <div>
+
     <button name="button" type="submit">Add Book</button>
-  </div>
+
 </form>

@@ -13,7 +13,7 @@ get('/') do
   erb(:index)
 end
 
-post('/books/new') do
+post('/') do
   title = params.fetch('title')
   genre = params.fetch('genre')
   new_book = Book.new({:title => title, :genre => genre, :id => nil})
