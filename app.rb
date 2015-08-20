@@ -13,11 +13,16 @@ get('/') do
   erb(:index)
 end
 
-post('/') do
+post('/books') do
   title = params.fetch('title')
   genre = params.fetch('genre')
   new_book = Book.new({:title => title, :genre => genre, :id => nil})
   new_book.save()
   @catalog = Book.all()
   erb(:index)
+end
+
+get('/books/:id') do
+  @book = Book.find(params.fetch("id").to_i())
+  erb(:book)
 end

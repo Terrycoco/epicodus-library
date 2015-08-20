@@ -13,3 +13,14 @@ describe('adding a book', {:type => :feature}) do
     expect(page).to have_content('Catcher in the Rye')
   end
 end
+
+describe('view details about an individual book', {:type => :feature}) do
+  it('allows user to click on individual book link and view details about that book') do
+    visit('/')
+    fill_in('title', :with => 'Animal Farm')
+    fill_in('genre', :with => 'Classics')
+    click_button("Add Book")
+    click_link('Animal Farm')
+    expect(page).to have_content('Classics')
+  end
+end
