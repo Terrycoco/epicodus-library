@@ -11,6 +11,23 @@ class Book
     result_set = DB.exec("INSERT INTO books (title, genre) VALUES ('#{@title}','#{@genre}') RETURNING book_id;")
     @id = result_set.first().fetch('book_id').to_i()
   end
+
+  define_singleton_method(:all) do
+    books = []
+    result_set = DB.exec("SELECT * FROM books;")
+    result_set.each() do |row|
+      title = row.fetch("title")
+      genre = row.fetch("genre")
+      id = row.fetch("book_id").to_i()
+      new_book = Book.new({:title => title,  :genre => genre, :id => id})
+      books.push(new_book)
+    end
+    books
+  end
+
+
+
+end
   #
   # define_method(:add_author) do |new_author|
   #   authorid = new_author.author_id()
@@ -23,15 +40,6 @@ class Book
   #
   # end
 
-
-
-
-
-
-
-
-
-  end
 
 
   #   books = []

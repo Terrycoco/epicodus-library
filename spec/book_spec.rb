@@ -23,6 +23,20 @@ describe(Book) do
     end
   end
 
+
+  describe('.all') do
+    it('should be empty at first') do
+      expect(Book.all()).to(eq([]))
+    end
+  end
+
+
+end
+
+
+
+
+
   # describe('#add_author') do
   #   it('adds an author to the authors property of the book') do
   #     new_author = Author.new({:lastname => 'Smith', :firstname => 'John', :author_id => nil})
@@ -33,16 +47,3 @@ describe(Book) do
   #     expect(new_book.authors().include?(new_author)).to(eq(true))
   #   end
   # end
-
-  # describe('.all') do
-  #   it('should be empty at first') do
-  #     expect(Book.all()).to(eq([]))
-  #   end
-  #
-  #   #we need to test a return of a filled books array next
-  # end
-
-
-
-
-end
