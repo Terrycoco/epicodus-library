@@ -15,6 +15,7 @@ RSpec.configure do |config|
 end
 
 describe(Book) do
+
   describe('#initialize') do
     it('creates a book and returns title') do
       new_book = Book.new({:title => 'A Christmas Carol',  :genre => 'classics', :id => nil})
@@ -23,15 +24,24 @@ describe(Book) do
     end
   end
 
-
   describe('.all') do
     it('should be empty at first') do
       expect(Book.all()).to(eq([]))
     end
   end
 
+  describe('.find') do
+    it('returns book by ID number') do
+      new_book = Book.new({:title => 'A Christmas Carol',  :genre => 'classics', :id => nil})
+      new_book.save()
+      new_book2 = Book.new({:title => 'Catcher in the Rye',  :genre => 'classics', :id => nil})
+      new_book2.save()
+      expect(Book.find(new_book2.id())).to(eq(new_book2))
+    end
+  end
 
 end
+
 
 
 

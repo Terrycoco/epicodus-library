@@ -25,7 +25,17 @@ class Book
     books
   end
 
+  define_method(:==) do |another_book|
+    self.id().==(another_book.id())
+  end
 
+  define_singleton_method(:find) do |param_id|
+    result_set = DB.exec("SELECT * from books where book_id = #{param_id};")
+    title = result_set.first().fetch("title")
+    genre = result_set.first().fetch("genre")
+    new_book = Book.new({:title => title, :genre => genre, :id => param_id})
+    new_book
+  end
 
 end
   #
