@@ -13,11 +13,17 @@ end
 
 describe(Author) do
 
-  describe(:initialize) do
+  describe('#initialize') do
     it('creates a author') do
       new_auth = Author.new({:firstname => 'Charles', :lastname => 'Dickens', :id => nil})
       new_auth.save()
       expect(new_auth.lastname()).to(eq('Dickens'))
+    end
+  end
+
+  describe('.all') do
+    it('returns all the authors in database') do
+      expect(Author.all()).to(eq([]))
     end
   end
 
