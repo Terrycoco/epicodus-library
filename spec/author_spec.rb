@@ -46,4 +46,15 @@ describe(Author) do
     end
   end
 
+  describe('#update') do
+    it('updates values of an author') do
+      new_auth = Author.new({:firstname => 'Charles', :lastname => 'Dicks', :id => nil})
+      new_auth2 = Author.new({:firstname => 'Ernest', :lastname => 'Hemmingway', :id => nil})
+      new_auth.save()
+      new_auth2.save()
+      new_auth.update({:lastname => 'Dickens'})
+      expect(new_auth.lastname()).to(eq('Dickens'))
+    end
+  end
+
 end

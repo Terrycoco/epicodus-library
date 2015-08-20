@@ -38,4 +38,9 @@ class Author
       new_auth
   end
 
+  define_method(:update) do  |attributes|
+    @lastname = attributes.fetch(:lastname, @lastname)
+    @firstname = attributes.fetch(:firstname, @firstname)
+    DB.exec("UPDATE authors SET firstname = '#{@firstname}', lastname = '#{lastname}' where author_id = #{@id};")
+  end
 end
