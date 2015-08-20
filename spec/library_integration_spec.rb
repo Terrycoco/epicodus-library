@@ -38,3 +38,15 @@ describe('how to update details about a book', {:type => :feature}) do
     expect(page).to have_content('Animal Farm')
   end
 end
+
+describe('how to delete a book', {:type => :feature}) do
+  it('allows user to delete a book') do
+    visit('/')
+    fill_in('title', :with => 'Animal Farms')
+    fill_in('genre', :with => 'Classics')
+    click_button("Add Book")
+    click_link('Animal Farms')
+    click_link('Delete Book')
+    expect(page).should_not have_content('Animal Farms')
+  end
+end

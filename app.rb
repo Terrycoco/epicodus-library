@@ -41,3 +41,10 @@ patch('/books/:id') do
   @book = thisbook
   erb(:book)
 end
+
+delete('/books/:id') do
+  @book = Book.find(params.fetch("id").to_i())
+  @book.delete()
+  @catalog = Book.all()
+  erb(:index)
+end
