@@ -27,4 +27,23 @@ describe(Author) do
     end
   end
 
+  describe('#==') do
+    it('returns true if two ids are equal') do
+      new_auth = Author.new({:firstname => 'Charles', :lastname => 'Dickens', :id => nil})
+      new_auth2 = Author.new({:firstname => 'Charles', :lastname => 'Dickens', :id => nil})
+      expect(new_auth).to(eq(new_auth2))
+    end
+  end
+
+  describe('.find') do
+    it('finds an author based on id') do
+      new_auth = Author.new({:firstname => 'Charles', :lastname => 'Dickens', :id => nil})
+      new_auth2 = Author.new({:firstname => 'Ernest', :lastname => 'Hemmingway', :id => nil})
+      new_auth.save()
+      new_auth2.save()
+      id = new_auth.id()
+      expect(Author.find(id)).to(eq(new_auth))
+    end
+  end
+
 end

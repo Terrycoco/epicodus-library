@@ -25,5 +25,17 @@ class Author
     authors
   end
 
-  
+  define_method(:==) do |another_author|
+    self.id().==(another_author.id())
+  end
+
+  define_singleton_method(:find) do |id|
+    result_set = DB.exec("SELECT * from authors where author_id = #{id};")
+      row = result_set.first()
+      lastname = row.fetch('lastname')
+      firstname = row.fetch('firstname')
+      new_auth = Author.new({:lastname => lastname, :firstname => firstname, :id => id})
+      new_auth
+  end
+
 end
