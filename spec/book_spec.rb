@@ -49,11 +49,18 @@ describe(Book) do
     end
   end
 
+  describe('#delete') do
+    it('deletes a book') do
+    new_book = Book.new({:title => 'A Christmas Carol',  :genre => 'classics', :id => nil})
+    new_book.save()
+    new_book2 = Book.new({:title => 'Catcher in the Rye',  :genre => 'classics', :id => nil})
+    new_book2.save()
+    new_book.delete()
+    expect(Book.all()).to(eq([new_book2]))
+    end
+  end
+
 end
-
-
-
-
 
 
   # describe('#add_author') do
