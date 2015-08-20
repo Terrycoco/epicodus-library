@@ -1,4 +1,8 @@
 <h1>Book Details</h1>
 
-<h3>Book Title: <%= @book.title %></h3>
-<h3>Book Genre: <%= @book.genre %></h3>
+<h3><%= @book.title %></h3>
+<h4>Genre: <%= @book.genre %></h4>
+
+
+<p><a href="/books/<%= @book.id() %>/edit">Edit Book</a></p>
+<a href="/">Back to Catalog</a>

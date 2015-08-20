@@ -26,3 +26,18 @@ get('/books/:id') do
   @book = Book.find(params.fetch("id").to_i())
   erb(:book)
 end
+
+get('/books/:id/edit') do
+  @book = Book.find(params.fetch("id").to_i())
+  erb(:book_edit)
+end
+
+patch('/books/:id') do
+  title = params.fetch('title')
+  genre = params.fetch('genre')
+  id = params.fetch("id").to_i()
+  thisbook = Book.find(id)
+  thisbook.update({:title => title, :genre => genre})
+  @book = thisbook
+  erb(:book)
+end
