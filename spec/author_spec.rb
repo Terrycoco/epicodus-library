@@ -57,4 +57,16 @@ describe(Author) do
     end
   end
 
+  describe('#delete') do
+    it('deletes an author entry') do
+      new_auth = Author.new({:firstname => 'Charles', :lastname => 'Dickens', :id => nil})
+      new_auth.save()
+      new_auth2 = Author.new({:firstname => 'Ernest', :lastname => 'Hemmingway', :id => nil})
+      new_auth2.save()
+      new_auth.delete()
+      expect(Author.all()).to(eq([new_auth2]))
+    end
+  end
+
+
 end

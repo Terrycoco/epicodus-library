@@ -43,4 +43,9 @@ class Author
     @firstname = attributes.fetch(:firstname, @firstname)
     DB.exec("UPDATE authors SET firstname = '#{@firstname}', lastname = '#{lastname}' where author_id = #{@id};")
   end
-end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM authors where author_id = #{@id};")
+  end
+
+end #end class
