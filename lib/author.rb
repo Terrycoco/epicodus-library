@@ -8,7 +8,7 @@ class Author
   end
 
   define_method(:save) do
-    result_set = DB.exec("INSERT INTO authors (firstname, lastname) VALUES ('#{@firstname}','#{lastname}') RETURNING author_id;")
+    result_set = DB.exec("INSERT INTO authors (firstname, lastname) VALUES ('#{@firstname}','#{@lastname}') RETURNING author_id;")
     @id = result_set.first().fetch("author_id")
   end
 
@@ -41,7 +41,7 @@ class Author
   define_method(:update) do  |attributes|
     @lastname = attributes.fetch(:lastname, @lastname)
     @firstname = attributes.fetch(:firstname, @firstname)
-    DB.exec("UPDATE authors SET firstname = '#{@firstname}', lastname = '#{lastname}' where author_id = #{@id};")
+    DB.exec("UPDATE authors SET firstname = '#{@firstname}', lastname = '#{@lastname}' where author_id = #{@id};")
   end
 
   define_method(:delete) do

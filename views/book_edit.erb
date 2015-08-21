@@ -1,0 +1,13 @@
+<form role="form" action="/books/<%= @book.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <div class="form-group">
+    <label for="title">Edit Title:</label>
+    <input class="form-control" type="text" name="title" value="<%= @book.title %>">
+    <br>
+    <label for="genre">Edit Genre:</label>
+    <input class="form-control" type="text" name="genre" value="<%= @book.genre %>">
+  </div>
+
+    <button class='btn-default' type="submit">Save</button>
+</form>

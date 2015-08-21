@@ -49,17 +49,26 @@ class Book
   end
 
 end
-  #
-  # define_method(:add_author) do |new_author|
-  #   authorid = new_author.author_id()
-  #   DB.exec("INSERT INTO book_author (book_id, author_id) VALUES (#{@book_id}, #{authorid});")
-  #   @authors.push(new_author)
-  # end
-  #
-  # define_singleton_method(:all) do
-  #
-  #
-  # end
+
+  define_method(:add_author) do |new_author|
+    authorid = new_author.id()
+    DB.exec("INSERT INTO authors_books (book_id, author_id) VALUES (#{@id}, #{authorid});")
+  end
+
+  define_method(:authors) do
+    authors = []
+    results = DB.exec("SELECT authors.author_id, firstname, lastname from authors_books
+      INNER JOIN authors on authors_books.author_id = authors.author_id;")
+    results.each() do |row|
+      firstname = row.fetch("firstname")
+      lastname = row.fetch("lastname")
+      id = row.fetch("author_id")
+      new_author = Author.new({:firstname => firstname, :lastname => lastname, :id => id})
+      authors.push(new_author)
+    end
+    authors
+  end
+
 
 
 

@@ -32,7 +32,7 @@ describe('how to update details about a book', {:type => :feature}) do
     fill_in('genre', :with => 'Classics')
     click_button("Add Book")
     click_link('Animal Farms')
-    click_link('Edit Book')
+    click_link('Edit')
     fill_in('title', :with => 'Animal Farm')
     click_button('Save')
     expect(page).to have_content('Animal Farm')
@@ -46,7 +46,7 @@ describe('how to delete a book', {:type => :feature}) do
     fill_in('genre', :with => 'Classics')
     click_button("Add Book")
     click_link('Animal Farms')
-    click_link('Delete Book')
+    click_button('Delete Book')
     expect(page).should_not have_content('Animal Farms')
   end
 end
